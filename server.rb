@@ -3,6 +3,8 @@ require 'json'
 require 'csv'
 require './schedule.rb'
 
+# curl -X POST -H 'Content-Type: text/csv' --data-binary @unscheduled_file.csv http://localhost:4567/schedule
+
 users = {
   'thibault': { first_name: 'Thibault', last_name: 'Denizet', age: 25 },
   'simon':    { first_name: 'Simon', last_name: 'Random', age: 26 },
