@@ -1,25 +1,15 @@
+require './models/solo.rb'
+
 module Schedule
   def self.print_json(json)
     json.inspect
   end
 
-  def self.print_csv(data)
-    # output = []
-    # CSV.parse(data, headers: true) #.each do |row|
-      # logger.info row
-      # output << row
-    # end
+  def self.schedule_csv(csv)
+    hash = csv.to_a.map { |row| row.to_hash.transform_keys(&:to_sym) }
 
-    # output
+    solos = hash.map { |h| Solo.new(**h) }
 
-    # logger.info data
-
-    output = []
-
-    CSV.parse(data, headers: true) do |row|
-      output << row
-    end
-
-    output
+    hash.to_json
   end
 end

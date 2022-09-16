@@ -35,7 +35,7 @@ post '/schedule' do
   logger.info request.body
 
   csv = CSV.new(request.body, :headers => true)
-  hash = csv.to_a.map { |row| row.to_hash }
+  schedule = Schedule.schedule_csv(csv)
 
-  hash.to_json
+  schedule
 end
